@@ -35,8 +35,10 @@
           } else if (xhttp.readyState == 4) {
             if (xhttp2.status == 200) {
               document.getElementById("apiStatus").innerHTML = "<b>operational</b>";
+              document.getElementById("apiStatusAlert").className = "alert alert-success";
             } else {
               document.getElementById("apiStatus").innerHTML = "<b>down</b>";
+              document.getElementById("apiStatusAlert").className = "alert alert-danger";
             }
           }
         };
@@ -54,12 +56,12 @@
       <br>
       <p class="text-center">This is a web front-end to an API I built that returns random images of my pet cat! The API is coded in JavaScript and hosted on Cloudflare Workers, and this website is static and hosted on GitHub Pages! This site simply makes an HTTP GET request to the API anytime you refresh it.</p>
       <br>
-      <div class="alert alert-danger text-center" role="alert">
+      <div class="alert alert-info text-center" role="alert">
         <b>It may take a while for the image to load. This is because the API returns raw image data, and your browser needs to encode it to Base64 to render the image. Other times, the API might be down. If it doesn't load within 10 seconds, then the API is definitely down, so come back later!</b>
       </div>
       <br>
-      <div class="alert alert-primary text-center" role="alert">
-        <p>The API is currently <p id="apiStatus"></p>.</p>
+      <div id="apiStatusAlert" class="alert alert-primary text-center" role="alert">
+        The API is currently <p id="apiStatus"></p>.
       </div>
       <div class="text-center">
         <img src="" id="kittyILoveYou" height="650" width = "650">
