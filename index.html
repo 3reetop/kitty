@@ -14,6 +14,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/eb4e2d8f8b.js" crossorigin="anonymous"></script>
     <script>
       window.onload = function() {
         var xhttp = new XMLHttpRequest();
@@ -40,10 +41,10 @@
             xhttp2.responseType = 'text';
           } else if (xhttp2.readyState == 4) {
             if (xhttp2.status == 200) {
-              document.getElementById("apiStatus").innerHTML = "<b>operational</b>";
+              document.getElementById("apiStatus").innerHTML = "<i class='fas fa-check'></i> <b>operational</b>";
               document.getElementById("apiStatusAlert").className = "alert alert-success text-center";
             } else {
-              document.getElementById("apiStatus").innerHTML = "<b>down</b>";
+              document.getElementById("apiStatus").innerHTML = "<i class='fas fa-exclamation-triangle'></i> <b>down</b>";
               document.getElementById("apiStatusAlert").className = "alert alert-danger text-center";
             }
           }
@@ -54,9 +55,6 @@
         xhttp2.send();
       }
     </script>
-    <style>
-      
-    </style>
   </head>
   <body>
     <div class="container-fluid">
@@ -66,21 +64,21 @@
       <p class="text-center">This is a web front-end to an API I built that returns random images of my pet cat! The API is coded in JavaScript and hosted on Cloudflare Workers, and this website is static and hosted on GitHub Pages! This site simply makes an HTTP GET request to the API anytime you refresh it.</p>
       <br>
       <div class="alert alert-info text-center" role="alert">
-        <b>It may take a while for the image to load. This is because the API returns raw image data, and your browser needs to encode it to Base64 to render the image. Other times, the API might be down. If it doesn't load within 10 seconds, then the API is definitely down, so come back later!</b>
+        <i class="fas fa-info-circle"></i> <b>It may take a while for the image to load. This is because the API returns raw image data, and your browser needs to encode it to Base64 to render the image. Other times, the API might be down. If it doesn't load within 10 seconds, then the API is definitely down, so come back later!</b>
       </div>
       <br>
       <div id="apiStatusAlert" class="alert alert-primary text-center" role="alert">
-        The API is currently <p id="apiStatus">?</p>
+        The API is currently <p id="apiStatus"><i class="fas fa-question"></i></p>
       </div>
       <div class="text-center">
         <img src="" id="kittyILoveYou" height="650" width = "650">
       </div>
       <br>
       <div class="text-center">
-        <button type="button" class="btn btn-primary" onclick="window.location.reload();">Get another picture of Kitty!</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.reload();"><i class="fas fa-cat"></i></button>
       </div>
       <br>
-      <p class="text-center">Copyright 2020 <a href="https://3reetop.tech">Sanel Kukic</a>. All rights reserved.</p>
+      <p class="text-center"><i class="far fa-copyright"></i> Copyright 2020 <a href="https://3reetop.tech">Sanel Kukic</a>. All rights reserved.</p>
       <br>
     </div>
   </body>
