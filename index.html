@@ -27,18 +27,18 @@
             var base_64 = window.btoa(data);
             document.getElementById("kittyILoveYou").src = "data:image/png;base64,"+base_64;
           }
-        }
+        };
         xhttp2.onreadystatechange = function() {
           if (xhttp2.readyState == 1) {
             xhttp2.setRequestHeader("Authorization", "ILoveYouKitty");
-            xhttp.responseType = "text";
-          } else if (xhttp2.readyState == 4) {
+            xhttp2.responseType = 'text';
+          } else if (xhttp.readyState == 4) {
             if (xhttp2.status == 200) {
-              document.getElementById("apiStatus").innerHTML = "operational";
+              document.getElementById("apiStatus").innerHTML = "<b>operational</b>";
             } else {
               document.getElementById("apiStatus").innerHTML = "<b>down</b>";
-          }
-        }
+            }
+        };
         xhttp.open("GET", "https://kitty.3reetop.tech", true);
         xhttp2.open("GET", "https://kitty.3reetop.tech/ping", true);
         xhttp.send();
