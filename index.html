@@ -32,7 +32,7 @@
           if (xhttp2.readyState == 1) {
             xhttp2.setRequestHeader("Authorization", "ILoveYouKitty");
             xhttp2.responseType = 'text';
-          } else if (xhttp.readyState == 4) {
+          } else if (xhttp2.readyState == 4) {
             if (xhttp2.status == 200) {
               document.getElementById("apiStatus").innerHTML = "<b>operational</b>";
               document.getElementById("apiStatusAlert").className = "alert alert-success";
