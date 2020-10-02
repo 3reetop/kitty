@@ -51,24 +51,26 @@
             }
           }
         };
-        xhttp.open("GET", "https://kitty.3reetop.tech", true);
-        xhttp2.open("GET", "https://kitty.3reetop.tech/ping", true);
+        xhttp.open("GET", "https://kittyy.3reetop.tech", true);
+        xhttp2.open("GET", "https://kittyy.3reetop.tech/ping", true);
         xhttp.send();
         xhttp2.send();
       }
       function onImageError()
       {
-        document.getElementById("kittyILoveYou").parentNode.removeChild(document.getElementById("kittyILoveYou"));
         Swal.fire({
           icon: 'error',
           title: 'Error',
           text: 'Failed to load image from Base64 string.',
-          confirmButtonText: 'Try again'
+          showCancelButton: true,
+          confirmButtonText: 'Try again',
+          cancelButtonText: 'Close'
         }).then((result) => {
           if (result.isConfirmed) {
             window.location.reload();
           }
         });
+        document.getElementById("kittyILoveYou").parentNode.removeChild(document.getElementById("kittyILoveYou"));
       }
     </script>
   </head>
@@ -77,10 +79,10 @@
       <h1 class="text-center">Kitty!</h1>
       <p class="text-center">by <a href="https://3reetop.tech">3reetop</a></p>
       <br>
-      <p class="text-center">This is a web front-end to an API I built that returns random images of my pet cat! The API is coded in JavaScript and hosted on Cloudflare Workers, and this website is static and hosted on GitHub Pages! This site simply makes an HTTP GET request to the API anytime you refresh it.</p>
+      <p class="text-center">This is a web front-end to an API I built that returns random images of my pet cat! The API is coded in JavaScript and hosted on Cloudflare Workers, and this website is static and hosted on GitHub Pages! This site simply makes an HTTP GET request to the API anytime you refresh it. <b>Click the button with the kitty cat on it to view another image!</b></p>
       <br>
       <div class="alert alert-info text-center" role="alert">
-        <i class="fas fa-info-circle"></i> <b>It may take a while for the image to load. This is because the API returns raw image data, and your browser needs to encode it to Base64 to render the image. Other times, the API might be down. If it doesn't load within 10 seconds, then the API is definitely down, so come back later!</b>
+        <i class="fas fa-info-circle"></i> <b>It may take a while for the image to load. Please be patient. If the API status shown below is in red, then the API is <b style="color: red;">down</b>, so try again later when the API status is <b style="color: green;">up</b></b>
       </div>
       <br>
       <div id="apiStatusAlert" class="alert alert-primary text-center" role="alert">
