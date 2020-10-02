@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/eb4e2d8f8b.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
       window.onload = function() {
         var xhttp = new XMLHttpRequest();
@@ -58,17 +59,16 @@
       function onImageError()
       {
         document.getElementById("kittyILoveYou").parentNode.removeChild(document.getElementById("kittyILoveYou"));
-        var errorElem = document.createElement("DIV");
-        errorElem.className = "alert alert-danger text-center";
-        errorElem.role = "alert";
-        errorElem.outerHTML = "";
-        var iconElem = document.createElement("I");
-        iconElem.className = "fas fa-exclamation-triangle";
-        errorElem.appendChild(iconElem);
-        var textElem =  document.createElement("B");
-        textElem.innerHTML = "Failed to load image.";
-        errorElem.appendChild(textElem);
-        document.getElementById("mainBody").insertBefore(errorElem, document.getElementById("mainBody").children[8]);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Failed to load image from Base64 string.',
+          confirmButtonText: 'Try again'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
       }
     </script>
   </head>
