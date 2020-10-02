@@ -11,6 +11,7 @@
     <script>
       window.onload = function() {
         var xhttp = new XMLHttpRequest();
+        var xhttp2 = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (xhttp.readyState == 1) {
             xhttp.setRequestHeader("Authorization", "ILoveYouKitty");
@@ -27,23 +28,23 @@
             document.getElementById("kittyILoveYou").src = "data:image/png;base64,"+base_64;
           }
         }
+        xhttp2.onreadystatechange = function() {
+          if (xhttp2.readyState == 1) {
+            xhttp2.setRequestHeader("Authorization", "ILoveYouKitty");
+            xhttp.responseType = "text";
+          } else if (xhttp2.readyState == 4) {
+            if (xhttp2.status == 200) {
+              document.getElementById("apiStatus").innerHTML = "operational";
+            } else {
+              document.getElementById("apiStatus").innerHTML = "<b>down</b>";
+          }
+        }
         xhttp.open("GET", "https://kitty.3reetop.tech", true);
+        xhttp2.open("GET", "https://kitty.3reetop.tech/ping", true);
         xhttp.send();
+        xhttp2.send();
       }
     </script>
-    <style>
-      .text-center {
-
-      }
-
-      .image-center {
-
-      }
-
-      .button-center {
-
-      }
-    </style>
   </head>
   <body>
     <div class="container-fluid">
@@ -54,6 +55,10 @@
       <br>
       <div class="alert alert-danger" role="alert">
         <b>It may take a while for the image to load. This is because the API returns raw image data, and your browser needs to encode it to Base64 to render the image. Other times, the API might be down. If it doesn't load within 10 seconds, then the API is definitely down, so come back later!</b>
+      </div>
+      <br>
+      <div class="alert alert-primary" role="alert">
+        <p>The API is currently <p id="apiStatus"></p>.</p>
       </div>
       <div class="text-center">
         <img src="" id="kittyILoveYou" height="650" width = "650">
