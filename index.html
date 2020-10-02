@@ -35,10 +35,10 @@
           } else if (xhttp2.readyState == 4) {
             if (xhttp2.status == 200) {
               document.getElementById("apiStatus").innerHTML = "<b>operational</b>";
-              document.getElementById("apiStatusAlert").className = "alert alert-success";
+              document.getElementById("apiStatusAlert").className = "alert alert-success text-center";
             } else {
               document.getElementById("apiStatus").innerHTML = "<b>down</b>";
-              document.getElementById("apiStatusAlert").className = "alert alert-danger";
+              document.getElementById("apiStatusAlert").className = "alert alert-danger text-center";
             }
           }
         };
@@ -61,7 +61,7 @@
       </div>
       <br>
       <div id="apiStatusAlert" class="alert alert-primary text-center" role="alert">
-        The API is currently <p id="apiStatus"></p>.
+        The API is currently <p id="apiStatus">?</p>.
       </div>
       <div class="text-center">
         <img src="" id="kittyILoveYou" height="650" width = "650">
