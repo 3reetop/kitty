@@ -46,6 +46,7 @@
             } else {
               document.getElementById("apiStatus").innerHTML = "<i class='fas fa-exclamation-triangle'></i> <b>down</b>";
               document.getElementById("apiStatusAlert").className = "alert alert-danger text-center";
+              document.getElementById("kittyILoveYou").parentNode.removeChild(document.getElementById("kittyILoveYou"));
             }
           }
         };
@@ -54,10 +55,25 @@
         xhttp.send();
         xhttp2.send();
       }
+      function onImageError()
+      {
+        document.getElementById("kittyILoveYou").parentNode.removeChild(document.getElementById("kittyILoveYou"));
+        var errorElem = document.createElement("DIV");
+        errorElem.className = "alert alert-danger text-center";
+        errorElem.role = "alert";
+        errorElem.outerHTML = "";
+        var iconElem = document.createElement("I");
+        iconElem.className = "fas fa-exclamation-triangle";
+        errorElem.appendChild(iconElem);
+        var textElem =  document.createElement("B");
+        textElem.innerHTML = "Failed to load image.";
+        errorElem.appendChild(textElem);
+        document.getElementById("mainBody").insertBefore(errorElem, document.getElementById("mainBody").children[8]);
+      }
     </script>
   </head>
   <body>
-    <div class="container-fluid">
+    <div id="mainBody" class="container-fluid">
       <h1 class="text-center">Kitty!</h1>
       <p class="text-center">by <a href="https://3reetop.tech">3reetop</a></p>
       <br>
@@ -71,7 +87,7 @@
         The API is currently <p id="apiStatus"><i class="fas fa-question"></i></p>
       </div>
       <div class="text-center">
-        <img src="" id="kittyILoveYou" height="650" width = "650">
+        <img src="" id="kittyILoveYou" onerror="onImageError();" height="650" width = "650">
       </div>
       <br>
       <div class="text-center">
