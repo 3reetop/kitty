@@ -16,8 +16,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/eb4e2d8f8b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://browser.sentry-cdn.com/5.24.2/bundle.tracing.min.js" integrity="sha384-Epltozh7S1cJM2hcIRDJBbqiiVpZsNlFCciHxKIAfKN8mSTa+gMivtz7glp/30Mz" crossorigin="anonymous"></script>
     <script>
       window.onload = function() {
+        Sentry.init({
+          dsn: 'https://740db163060341fda11ca6badd732b91@o456406.ingest.sentry.io/5449433'
+        });
+        Sentry.configureScope(scope => {
+          scope.setExtra('useragent', navigator.userAgent);
+        });
         var xhttp = new XMLHttpRequest();
         var xhttp2 = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -51,13 +58,16 @@
             }
           }
         };
-        xhttp.open("GET", "https://kitty.3reetop.tech", true);
-        xhttp2.open("GET", "https://kitty.3reetop.tech/ping", true);
+        xhttp.open("GET", "https://1kitty.3reetop.tech", true);
+        xhttp2.open("GET", "https://1kitty.3reetop.tech/ping", true);
         xhttp.send();
         xhttp2.send();
       }
-      function onImageError()
+      function onImageError(evt)
       {
+        var $e = $(this);
+        var src = $e.attr("src");
+        Sentry.captureException(new Error('Failed to load image from source URL: '+src));
         Swal.fire({
           icon: 'error',
           title: 'Error',
@@ -68,9 +78,10 @@
         }).then((result) => {
           if (result.isConfirmed) {
             window.location.reload();
+          } else if (result.isCanceled) {
+            document.getElementById("kittyILoveYou").parentNode.removeChild(document.getElementById("kittyILoveYou"));
           }
         });
-        document.getElementById("kittyILoveYou").parentNode.removeChild(document.getElementById("kittyILoveYou"));
       }
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127725278-21"></script>
@@ -96,8 +107,8 @@
       <div id="apiStatusAlert" class="alert alert-primary text-center" role="alert">
         The API is currently <p id="apiStatus"><i class="fas fa-question"></i></p>
       </div>
-      <div class="text-center">
-        <img id="kittyILoveYou" onerror="onImageError();" height="650" width = "650">
+      <div id="cuteKitty" class="text-center">
+        <img id="kittyILoveYou" class="fit" height="650" width="650" onerror="onImageError.call(this, event);" style="object-fit: scale-down;">
       </div>
       <br>
       <div class="text-center">
