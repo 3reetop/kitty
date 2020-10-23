@@ -6,26 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta property="og:title" content="Kitty! by 3reetop"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://meow.3reetop.tech"/>
-    <meta property="og:image" content="https://3reetop.tech/assets/img/circle-cropped.png"/>
+    <meta property="og:url" content="https://meow.3reetop.eu.org"/>
+    <meta property="og:image" content="https://3reetop.eu.org/assets/img/circle-cropped.png"/>
     <meta property="og:description" content="A website that serves a different picture of my cat each time you reload it!"/>
     <meta property="og:locale" content="en_US"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/x-icon" href="https://3reetop.tech/assets/img/circle-cropped.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="https://3reetop.eu.org/assets/img/circle-cropped.png"/>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/eb4e2d8f8b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://browser.sentry-cdn.com/5.24.2/bundle.tracing.min.js" integrity="sha384-Epltozh7S1cJM2hcIRDJBbqiiVpZsNlFCciHxKIAfKN8mSTa+gMivtz7glp/30Mz" crossorigin="anonymous"></script>
     <script>
       window.onload = function() {
-        Sentry.init({
-          dsn: 'https://740db163060341fda11ca6badd732b91@o456406.ingest.sentry.io/5449433'
-        });
-        Sentry.configureScope(scope => {
-          scope.setExtra('useragent', navigator.userAgent);
-        });
         var xhttp = new XMLHttpRequest();
         var xhttp2 = new XMLHttpRequest();
         var xhttp3 = new XMLHttpRequest();
@@ -68,9 +61,9 @@
             document.getElementById("imageCount").innerHTML = xhttp3.responseText;
           }
         };
-        xhttp.open("GET", "https://kitty.3reetop.tech", true);
-        xhttp2.open("GET", "https://kitty.3reetop.tech/ping", true);
-        xhttp3.open("GET", "https://kitty.3reetop.tech/count", true);
+        xhttp.open("GET", "https://kitty.3reetop.eu.org", true);
+        xhttp2.open("GET", "https://kitty.3reetop.eu.org/ping", true);
+        xhttp3.open("GET", "https://kitty.3reetop.eu.org/count", true);
         xhttp.send();
         xhttp2.send();
         xhttp3.send();
@@ -96,23 +89,20 @@
         });
       }
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127725278-21"></script>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MHZLDGJ');</script>
-<!-- End Google Tag Manager -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKW5QKQBTZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WKW5QKQBTZ');
+    </script>
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHZLDGJ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) --> 
     <div id="mainBody" class="container-fluid">
       <h1 class="text-center">Kitty!</h1>
-      <p class="text-center">by <a href="https://3reetop.tech">3reetop</a></p>
+      <p class="text-center">by <a href="https://3reetop.eu.org">3reetop</a></p>
       <br>
       <p class="text-center">This is a web front-end to an API I built that returns random images of my pet cat! The API is coded in JavaScript and hosted on Cloudflare Workers, and this website is static and hosted on GitHub Pages! This site simply makes an HTTP GET request to the API anytime you refresh it. <b>Click the button with the kitty cat on it to view another image!</b></p>
       <br>
@@ -134,7 +124,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <br>
       <p class="text-center">There are currently <b class="text-center" id="imageCount">?</b> images in the database.</p>
       <br>
-      <p class="text-center"><i class="far fa-copyright"></i> Copyright 2020 <a href="https://3reetop.tech">Sanel Kukic</a>. All rights reserved.</p>
+      <p class="text-center"><i class="far fa-copyright"></i> Copyright 2020 <a href="https://3reetop.eu.org">Sanel Kukic</a>. All rights reserved.</p>
       <br>
     </div>
   </body>
